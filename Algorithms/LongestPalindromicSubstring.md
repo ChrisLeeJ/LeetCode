@@ -29,13 +29,18 @@ public:
         string L_Palindrome = "";
         for(int center = 0; center < s.length(); ++center) {
             int min_point = center, max_point = center;
-            while (s[min_point--] == s[max_point++]) ;
-            L_Palindrome = (L_Palindrome.length() < (max_point - min_point - 3)) ? s.substr( min_point + 2, max_point - min_point - 3 ) : L_Palindrome;
+            while (s[--min_point] == s[++max_point])
+                if (min_point < 0 || max_point >= s.length())
+                    break;
+            L_Palindrome = (L_Palindrome.length() < (max_point - min_point - 1)) ? s.substr( min_point + 1, max_point - min_point - 1 ) : L_Palindrome;
 
             min_point = center;
             max_point = center + 1;
-            while (s[min_point--] == s[max_point++]) ;
-            L_Palindrome = (L_Palindrome.length() < (max_point - min_point - 2)) ? s.substr( min_point + 1, max_point - min_point - 2 ) : L_Palindrome;
+            if (s[min_point] == s[max_point])
+                while (s[--min_point] == s[++max_point])
+                    if (min_point < 0 || max_point >= s.length())
+                        break;
+            L_Palindrome = (L_Palindrome.length() < (max_point - min_point - 1)) ? s.substr( min_point + 1, max_point - min_point - 1 ) : L_Palindrome;
         }
         return L_Palindrome;
     }
