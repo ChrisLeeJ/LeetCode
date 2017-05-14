@@ -1,5 +1,1 @@
-CommonTest/bin/*
-CommonTest/obj/*
-CommonTest/CommonTest.cbp
-CommonTest/CommonTest.depend
-CommonTest/CommonTest.layout
+CommonTest/CommonTest/*
