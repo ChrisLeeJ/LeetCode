@@ -1,11 +1,26 @@
-#include <iostream>
-#include <string>
-using namespace std;
+# [String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/#/description)
 
+Implement atoi to convert a string to an integer.
+
+**Hint:** Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.
+
+**Notes:** It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.
+
+## 分析
+
+*  符号后只能跟数字 跟其他符号 返回0
+*  数字后跟其他符号立刻停止返回数字
+*  考虑超过INT_MAX和INT_MIN的情况
+
+
+
+## code
+
+```
 class Solution {
 public:
-	int myAtoi(string str) {
-		bool isPositive = true;
+    int myAtoi(string str) {
+        bool isPositive = true;
 		for (int i = 0; i < str.length(); ++i){
 			if (str[i] != ' '){
 				switch (str[i]){
@@ -38,16 +53,7 @@ public:
 			result = result * 10 + str[i] - 48;
 		}
 		return isPositive == true ? result : -result;
-	}
+    }
 };
+```
 
-int main(){
-	string str;
-	cin >> str;
-	Solution x;
-	const char * strtemp = str.c_str();
-	cout << atoi(strtemp) << endl;
-	cout << x.myAtoi(str) << endl;
-	system("pause");
-	return 0;
-}
